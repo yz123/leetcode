@@ -1,5 +1,9 @@
-"""136 Signle Numbers
+"""
+136 Signle Numbers
 Given an array of integers, every element appears twice except for one. Find that single one.
+Note:
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+p XOR q = ( p | q ) & ~( p & q)
 """
 
 class Solution(object):
@@ -7,11 +11,21 @@ class Solution(object):
         """
         :type nums: List[int]
         :rtype: int
+         return sum(list(set(nums)))*2 - sum(nums)
         """
+        
+        return reduce(lambda x, y: x^ y, nums)
+        
+        '''
         single_number = nums[0]
         for i in range(1, len(nums)):
             single_number = single_number ^ nums[i]
         return single_number
+        '''
+        
+        '''
+        return sum(list(set(nums)))*2 - sum(nums)
+        '''
 
 
 """ Submission Detail
