@@ -48,7 +48,7 @@ class Solution(object):
 			medians.append(temp[len(temp)/2])
 			temp=[]
 		medians.sort()
-		return medians[len(medians)/2]
+	    return medians[len(medians)/2]
 
 def main():
 	A = [2,3,4,5,6,7]
