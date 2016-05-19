@@ -3,6 +3,7 @@ Given array A of size n and integer k,
 find the k-th elements in A
 for example: A = [4,2,1,3,5], k=3
 return 3
+
 Idea:
 DeterministicSelect: Given array A of size n and integer k,
 1. Group the array into n/5 groups of size 5 and find the median of each group. (For simplicity, we will ignore integrality issues.)
