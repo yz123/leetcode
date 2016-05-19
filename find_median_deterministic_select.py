@@ -10,11 +10,17 @@ DeterministicSelect: Given array A of size n and integer k,
 3. Use p as a pivot to split the array into subarrays LESS and GREATER.
 4. Recurse on the appropriate piece.
 """
+import random
 class Solution(object):
     def deterministicSelection(self, A, k):
         if len(A) ==1:
             return A[0]
+        if len(A) == 0:
+            return "no median"
+        
         sel = self.get_median_of_median(A)
+        #sel = random.choice(A)
+        
         Great = []
         Small = []
         
@@ -44,22 +50,24 @@ class Solution(object):
             i+=1
             if i==5:
                 temp.sort()
-                medians.append(temp[2])
+                medians.append(temp[len(temp)/2])
                 i=0
-        if i!=5:
-            #print temp
+                temp=[]
+        
+        if len(temp)!=0:
             temp.sort()
-            medians.append(temp[len(temp)/2])
-            temp=[]
+            medians.append(temp[len(temp)/2])   
+        
         #medians.sort()
         #return medians[len(medians)/2]
-        #print medians
         return self.deterministicSelection(medians,len(medians)/2)
 
 def main():
     A = [2,3,4,5,6,7,8,9,10, 11,12]
+    A = range(1, 10000)
+    #print A
     qs = Solution()
-    print qs.deterministicSelection(A,8)
+    print qs.deterministicSelection(A,1000)
 
 if __name__=="__main__":
     main()
