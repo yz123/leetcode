@@ -15,6 +15,7 @@ Idea:
 Median = (max(ar1[0], ar2[0]) + min(ar1[1], ar2[1]))/2
 """
 
+#recursion function
 class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
         """
@@ -22,3 +23,55 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
+        m = len(nums1)
+        n = len(nums2)
+        
+        #odd
+        if (m+n)%2!=0:
+            return self.findKth(nums1, nums2, (m+n)/2, 0, m-1, 0, n-1)*1.0
+        #even
+        else:
+            return ( self.findKth(nums1, nums2, (m+n)/2, 0, m-1, 0, n-1) + self.findKth(nums1, nums2, (m+n)//2-1, 0, m-1, 0, n-1) ) * 0.5
+        
+  
+    def findKth(self, A, B, k, a_begin, a_end, b_begin, b_end):
+        len_a = a_end - a_begin + 1
+        len_b = b_end - b_begin + 1
+        #print A, B
+        #print k, a_begin, a_end, b_begin, b_end
+        if len_a ==0:
+            return B[b_begin+k]
+        if len_b ==0:
+            return A[a_begin+k]
+        if k == 0:
+            return min(A[a_begin], B[b_begin])
+          
+        piv_a = k* len_a /(len_a + len_b)
+        #piv_b = k* len_b / (len_a + len_b)
+        piv_b =k-piv_a-1
+        
+        index_a = a_begin + piv_a
+        index_b = b_begin + piv_b
+        if A[index_a] > B[index_b]:
+            k = k- (index_b - b_begin +1)
+            a_end = index_a
+            b_begin = index_b + 1
+            
+        else:
+            k = k- (index_a - a_begin  +1)
+            a_begin = index_a +1
+            b_end = index_b
+        
+        
+        return self.findKth(A, B, k, a_begin, a_end, b_begin, b_end)
+    
+        
+def main():
+    A = [1,2]
+    B = [1,1,3]
+    #print A
+    qs = Solution()
+    print qs.findMedianSortedArrays(A,B)
+
+if __name__=="__main__":
+    main()
