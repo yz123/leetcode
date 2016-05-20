@@ -15,7 +15,8 @@ Idea:
 Median = (max(ar1[0], ar2[0]) + min(ar1[1], ar2[1]))/2
 """
 
-#recursion function
+#iterative function
+# k is the index of the element we want to find
 class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
         """
