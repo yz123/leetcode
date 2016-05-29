@@ -494,18 +494,43 @@ Determine whether an integer is a palindrome. Do this without extra space.
 ```
 
 ### Idea
-
+compare the left and right. 
+If left==right, then remove the left and right number
 
 
 ### Code
 
 ```python
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x<0:
+            return False
+            
+        l_index = 1
+        while x/l_index >= 10:
+            l_index *= 10
+        
+        while x:
+            left = x/l_index
+            right = x%10
+            if left != right:
+                return False
+            x %= l_index
+            x /= 10
+            l_index /=100
+        return True
 
 ```
 
 ### Leetcode output
 ```
-
+11506 / 11506 test cases passed.
+Status: Accepted
+Runtime: 276 ms
 ```
 
 ### Reference
