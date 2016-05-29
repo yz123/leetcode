@@ -420,186 +420,132 @@ Runtime: 60 ms
 ### Reference
 None
 
-## 8. 
+## 8. String to Integer (atoi)
 
 ```
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+Implement atoi to convert a string to an integer.
 
-You may assume that each input would have exactly one solution.
+Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.
 
-Example:
-Given nums = [2, 7, 11, 15], target = 9,
+Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.
 
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-UPDATE (2016/2/13):
-The return format had been changed to zero-based indices. Please read the above updated description carefully.
+Update (2015-02-10):
+The signature of the C++ function had been updated. If you still see your function signature accepts a const char * argument, please click the reload button  to reset your code definition.
 ```
 
 ### Idea
 
-1. rest = target - current_value.
-2. find rest in a dictionary. 
-3. be careful about the same index of rest and current_value. 
+At the end, check whether it is overflow
 
 ### Code
 
 ```python
-# created by Ji Wang ericshape @ 5/23/16 2:11 PM
-
 class Solution(object):
-    def twoSum(self, nums, target):
+    def myAtoi(self, str):
         """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
+        :type str: str
+        :rtype: int
         """
-        sum = dict()
-
-        k = 0
-        for v in nums:
-            sum[v] = k
-            k += 1
-
-        k = 0
-        for v in nums:
-            rest = target - v
-            # be careful about the result in same index!
-            if rest in sum and k != sum[rest]:
-                return [k, sum[rest]]
-            k += 1
+        if not str:
+            return 0
+        INT_MAX=2147483647
+        INT_MIN=-2147483648    
+        
+        str=str.strip()
+        ret, i, sign = 0, 0, 1
+        if str[i]=="-":
+            sign = -1
+            i+=1
+        elif str[i]=="+":
+            sign = 1
+            i+=1
+        while i<len(str):
+            if str[i].isdigit()==True:
+                ret = ret*10 + int(str[i])
+                i+=1
+            else:
+                break
+        
+        
+        ret = ret*sign
+        if ret > INT_MAX and sign==1:
+            return INT_MAX
+        if ret < INT_MIN and sign ==-1:
+            return INT_MIN
+        return ret
+        
 ```
 
 ### Leetcode output
 ```
-16 / 16 test cases passed.
+1047 / 1047 test cases passed.
 Status: Accepted
-Runtime: 56 ms
-Submitted: 0 minutes ago
+Runtime: 76 ms
 
 ```
 
 ### Reference
 None
 
-## 1. Two Sum 
+## 9. Palindrome Number
 
 ```
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-
-You may assume that each input would have exactly one solution.
-
-Example:
-Given nums = [2, 7, 11, 15], target = 9,
-
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-UPDATE (2016/2/13):
-The return format had been changed to zero-based indices. Please read the above updated description carefully.
+Determine whether an integer is a palindrome. Do this without extra space.
 ```
 
 ### Idea
 
-1. rest = target - current_value.
-2. find rest in a dictionary. 
-3. be careful about the same index of rest and current_value. 
+
 
 ### Code
 
 ```python
-# created by Ji Wang ericshape @ 5/23/16 2:11 PM
 
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        sum = dict()
-
-        k = 0
-        for v in nums:
-            sum[v] = k
-            k += 1
-
-        k = 0
-        for v in nums:
-            rest = target - v
-            # be careful about the result in same index!
-            if rest in sum and k != sum[rest]:
-                return [k, sum[rest]]
-            k += 1
 ```
 
 ### Leetcode output
 ```
-16 / 16 test cases passed.
-Status: Accepted
-Runtime: 56 ms
-Submitted: 0 minutes ago
 
 ```
 
 ### Reference
 None
 
-## 1. Two Sum 
+## 10. Regular Expression Matching
 
 ```
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+Implement regular expression matching with support for '.' and '*'.
 
-You may assume that each input would have exactly one solution.
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
 
-Example:
-Given nums = [2, 7, 11, 15], target = 9,
+The matching should cover the entire input string (not partial).
 
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-UPDATE (2016/2/13):
-The return format had been changed to zero-based indices. Please read the above updated description carefully.
+The function prototype should be:
+bool isMatch(const char *s, const char *p)
+
+Some examples:
+isMatch("aa","a") → false
+isMatch("aa","aa") → true
+isMatch("aaa","aa") → false
+isMatch("aa", "a*") → true
+isMatch("aa", ".*") → true
+isMatch("ab", ".*") → true
+isMatch("aab", "c*a*b") → true
 ```
 
 ### Idea
 
-1. rest = target - current_value.
-2. find rest in a dictionary. 
-3. be careful about the same index of rest and current_value. 
+这个礼拜没时间做了:-(
 
 ### Code
 
 ```python
-# created by Ji Wang ericshape @ 5/23/16 2:11 PM
 
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        sum = dict()
-
-        k = 0
-        for v in nums:
-            sum[v] = k
-            k += 1
-
-        k = 0
-        for v in nums:
-            rest = target - v
-            # be careful about the result in same index!
-            if rest in sum and k != sum[rest]:
-                return [k, sum[rest]]
-            k += 1
 ```
 
 ### Leetcode output
 ```
-16 / 16 test cases passed.
-Status: Accepted
-Runtime: 56 ms
-Submitted: 0 minutes ago
 
 ```
 
