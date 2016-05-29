@@ -60,3 +60,40 @@ class Solution(object):
         #if ret < INT_MIN and sign ==-1:
         #    return INT_MIN
         return ret
+        
+        
+#accepted code:
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        if not str:
+            return 0
+        INT_MAX=2147483647
+        INT_MIN=-2147483648    
+        
+        str=str.strip()
+        ret, i, sign = 0, 0, 1
+        if str[i]=="-":
+            sign = -1
+            i+=1
+        elif str[i]=="+":
+            sign = 1
+            i+=1
+        while i<len(str):
+            if str[i].isdigit()==True:
+                ret = ret*10 + int(str[i])
+                i+=1
+            else:
+                break
+        
+        
+        ret = ret*sign
+        if ret > INT_MAX and sign==1:
+            return INT_MAX
+        if ret < INT_MIN and sign ==-1:
+            return INT_MIN
+        return ret
+        
