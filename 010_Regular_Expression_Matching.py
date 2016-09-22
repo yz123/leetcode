@@ -18,7 +18,13 @@ isMatch("aab", "c*a*b") ? true
 """
 '''
 https://discuss.leetcode.com/topic/48918/a-pattern-based-dp-solution-in-c-best-submission-4ms/4
-Idea: check 
+Idea: 
+1. check if len(p)==1, if it is, check *; 
+2. if len(p)>1: check whether 
+        (1) p is like "a*XX", if not, check s[0]==p[0], move both to next char; 
+        (2) if p is like "a*XX", 
+             *check isMatch(s, "XX")==True, 
+             *if not, check if p[0]==s[0], if true, move to isMach(s[1:], p)
 '''
 
 
