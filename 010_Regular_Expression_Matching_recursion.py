@@ -27,7 +27,6 @@ Idea:
              *if not, check if p[0]==s[0], if true, move to isMach(s[1:], p)
 '''
 
-
 class Solution(object):
     def isMatch(self, s, p):
         """
@@ -57,6 +56,8 @@ class Solution(object):
                 if p[1]!="*":
                     if slen!=0 and (p[0] == "." or p[0] == s[0]):
                         return self.matching(s[1:], p[1:])
+                    elif slen!=0 and (p[0]=="*"):
+                        return (  self.matching(s[1:], p[1:]) or self.matching(s[1:], p)  )
                     else: 
                         return False
                 else: #p="a* XXX"
