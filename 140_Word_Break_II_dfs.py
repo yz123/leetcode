@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: List[str]
         dfe idea: 如果s在dict中，return s; 否则，把s分成两半,进行遍历 
         """
-        #tokenDict = {}
+        tokenDict = {}
         def dfs(s):
             ans = []
             if s in wordDict:
@@ -16,10 +16,10 @@ class Solution(object):
                 prefix, suffix = s[:i+1], s[i+1:]
                 #prefix匹配，匹配，看后面
                 if prefix in wordDict:
-                    #if suffix in tokenDict:
-                    #    rest = tokenDict[suffix]
-                   # else:
-                    rest = dfs(suffix)
+                    if suffix in tokenDict:
+                        rest = tokenDict[suffix]
+                    else:
+                        rest = dfs(suffix)
                     for word in rest:
                         ans.append(prefix + " " + word)
             #tokenDict[s]=ans
