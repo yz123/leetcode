@@ -44,7 +44,7 @@ class Solution(object):
         for i in range(1, lens+1):
             for w in map:
                 lenw = len(w)
-                if i >= lenw and dp[i-lenw] and s[i:lenw]==w:
+                if i >= lenw and dp[i-lenw] and s[i-lenw:i]==w:
                     dp[i]=True
                     break
         return dp[lens]
