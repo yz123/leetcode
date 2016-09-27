@@ -3,6 +3,8 @@ Given a linked list, return the node where the cycle begins. If there is no cycl
 
 Note: Do not modify the linked list.
 
+http://www.tuicool.com/articles/3EZJbm
+
 步骤一：通过Linked List Cycle的方式，则快慢指针（快指针一次两步，慢指针一次一步）相遇时，则表示存在环，且相遇点在环上。
 步骤二：如果环存在，记：
 c表示从head到环起始点的距离；
