@@ -22,7 +22,7 @@ class Solution(object):
                         rest = dfs(suffix)
                     for word in rest:
                         ans.append(prefix + " " + word)
-            #tokenDict[s]=ans
+            tokenDict[s]=ans
             return ans
         
         
