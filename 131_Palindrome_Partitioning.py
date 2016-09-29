@@ -35,7 +35,7 @@ class Solution(object):
             if self.isPalindrome(prefix):
                 #tmp = result+[prefix]
                 #self.dfs(surfix, ans, tmp)
-                self.dfs(surf, ans, result+[prefix])
+                self.dfs(surfix, ans, result+[prefix])
             
     
     def isPalindrome(self, s):
