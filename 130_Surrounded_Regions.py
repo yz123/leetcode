@@ -78,4 +78,49 @@ class Solution(object):
         if j < col-1 and board[i][j+1] == 'O':
             board[i][j+1] = '#'
             self.dfs(board, i, j+1)
-                
+
+#BFS            
+"""
+// Method 1 BFS  
+public class Solution {  
+    public void solve(char[][] board) {  
+        if (board == null || board.length == 0 || board[0].length == 0)  
+            return;  
+        int m = board.length, n = board[0].length;  
+        for (int j = 0; j < n; j++) {  
+            if (board[0][j] == 'O') bfs(0, j, board); // row 0  
+            if (board[m - 1][j] == 'O') bfs(m - 1, j, board); // last row  
+        }  
+        for (int i = 0; i < m; i++) {  
+            if (board[i][0] == 'O') bfs(i, 0, board); // col 0  
+            if (board[i][n - 1] == 'O') bfs(i, n - 1, board); // last col  
+        }  
+          
+        for (int i = 0; i < m; i++) {  
+            for (int j = 0; j < n; j++) {  
+                if (board[i][j] == 'O') board[i][j] = 'X';  
+                else if (board[i][j] == 'M') board[i][j] = 'O';  
+            }  
+        }  
+    }  
+    public void bfs(int i, int j, char[][] board) {  
+        LinkedList<Integer> queue = new LinkedList<Integer>();  
+        visit(i, j, board, queue);  
+        while (!queue.isEmpty()) {  
+            int idx = queue.poll();  
+            int r = idx / board[0].length;  
+            int c = idx % board[0].length;  
+            visit(r - 1, c, board, queue);  
+            visit(r + 1, c, board, queue);  
+            visit(r, c - 1, board, queue);  
+            visit(r, c + 1, board, queue);  
+        }  
+    }  
+    public void visit(int i, int j, char[][] board, LinkedList<Integer> queue) {  
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != 'O')  
+            return;  
+        board[i][j] = 'M';  
+        queue.offer(i * board[0].length + j);  
+    }  
+}  
+"""
