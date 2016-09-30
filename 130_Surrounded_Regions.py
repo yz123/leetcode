@@ -79,7 +79,8 @@ class Solution(object):
             board[i][j+1] = '#'
             self.dfs(board, i, j+1)
 
-#BFS            
+#BFS   
+#http://likesky3.iteye.com/blog/2240270
 """
 // Method 1 BFS  
 public class Solution {  
