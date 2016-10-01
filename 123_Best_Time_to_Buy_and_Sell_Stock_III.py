@@ -19,11 +19,11 @@ You may not engage in multiple transactions at the same time (ie, you must sell 
 """
 
 #reversse
-""
+"""
  profit = Math.max(profit, maxPrice-prices[i]);
  secondTransProfit[i] = profit;
  maxPrice = Math.max(maxPrice, prices[i]); 
-""
+"""
 
 class Solution(object):
     def maxProfit(self, prices):
