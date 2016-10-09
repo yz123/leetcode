@@ -29,7 +29,7 @@ class Solution(object):
     
     def linear(self, heights):
         #get the left most and right most for each bar
-        #使用栈，当前高度大于栈顶高度时，入栈； 如果栈顶高度高，说明栈顶元素最右的是当前元素，出站，继续比较栈顶和当前元素
+        #使用栈，当前高度大于等于栈顶高度时，入栈； 如果栈顶高度高，说明栈顶元素最右的是当前元素，出站，继续比较栈顶和当前元素
         #总结：如果一个元素要pop出来，最右的肯定是当前元素前面那个位置，最左的是栈里下一个元素
         if len(heights) == 0: return 0
         length = len(heights)
