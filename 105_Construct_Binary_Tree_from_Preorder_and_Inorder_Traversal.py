@@ -47,24 +47,26 @@ class Solution(object):
         root = TreeNode(preorder[0])
         stack.append(root)
         node = root
-        cur_pre = 0
-        cur_in = 0
-        while cur_pre < len(preorder):
-            if preorder[cur_pre] != inorder[cur_in]:
-                node.left = TreeNode(preorder[cur_pre+1])
-                node = node.left
+        p = 1
+        i = 0
+        while True:
+            if stack[-1].val == inorder[i]:
+                node = stack.pop()
+                i = i+1
+                if i>=len(preorder):
+                    break
+                if stack and stack[-1].val == inorder[i]:
+                    continue
+                node.right = TreeNode(preorder[p])
+                p = p+1
+                node = node.right
                 stack.append(node)
             else:
-                #print stack[-1].val, inorder[cur_in]
-                while len(stack)!=0 and stack[-1].val== inorder[cur_in]:
-                    node = stack.pop()
-                    cur_in += 1
-                if cur_pre < len(preorder)-1:
-                    node.right = TreeNode(preorder[cur_pre+1])
-                    node = node.right
-                    stack.append(node)
-            cur_pre += 1
-            #print cur_pre, cur_in
+                node.left = TreeNode(preorder[p])
+                node = node.left
+                stack.append(node)
+                p = p+1
+        
         return root
     
     #https://discuss.leetcode.com/topic/61931/13ms-c-solution-without-recursion
@@ -93,3 +95,4 @@ class Solution(object):
                     node = node.right
                     stack.append(node)
         return root
+    
