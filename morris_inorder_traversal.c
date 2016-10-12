@@ -1,4 +1,5 @@
 #http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html
+#http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and-without-stack/
 #idea:
 """
 如果当前节点左孩子为空，则遍历，否则把当前节点移到其左孩子右子树的最后
