@@ -5,6 +5,7 @@ I will first give the solution then show you the magic template.
 
 The code of solving this problem is below. It might be the shortest among all solutions provided in Discuss.
 
+```
 string minWindow(string s, string t) {
         vector<int> map(128,0);
         for(auto c: t) map[c]++;
@@ -18,10 +19,12 @@ string minWindow(string s, string t) {
         }
         return d==INT_MAX? "":s.substr(head, d);
     }
+```
 Here comes the template.
 
 For most substring problem, we are given a string and need to find a substring of it which satisfy some restrictions. A general way is to use a hashmap assisted with two pointers. The template is given below.
 
+```
 int findSubstring(string s){
         vector<int> map(128,0);
         int counter; // check whether the substring is valid
@@ -47,10 +50,13 @@ int findSubstring(string s){
         }
         return d;
   }
+ ```
+ 
 One thing needs to be mentioned is that when asked to find maximum substring, we should update maximum after the inner while loop to guarantee that the substring is valid. On the other hand, when asked to find minimum substring, we should update minimum inside the inner while loop.
 
 The code of solving Longest Substring with At Most Two Distinct Characters is below:
 
+```
 int lengthOfLongestSubstringTwoDistinct(string s) {
         vector<int> map(128, 0);
         int counter=0, begin=0, end=0, d=0; 
@@ -61,10 +67,13 @@ int lengthOfLongestSubstringTwoDistinct(string s) {
         }
         return d;
     }
+ ```
+    
 The code of solving Longest Substring Without Repeating Characters is below:
 
 Update 01.04.2016, thanks @weiyi3 for advise.
 
+```
 int lengthOfLongestSubstring(string s) {
         vector<int> map(128,0);
         int counter=0, begin=0, end=0, d=0; 
@@ -75,4 +84,5 @@ int lengthOfLongestSubstring(string s) {
         }
         return d;
     }
+```
 I think this post deserves some upvotes! : )
