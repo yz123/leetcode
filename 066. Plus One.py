@@ -10,9 +10,9 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
-        #return self.lamda(digits)
+        return self.lamda(digits)
         #return self.p_one(digits)
-        return self.recursion(digits, len(digits)-1)
+        #return self.recursion(digits, len(digits)-1)
     
     def lamda(self, digits):
         num = reduce( lambda x,y: 10*x + y, digits) + 1
