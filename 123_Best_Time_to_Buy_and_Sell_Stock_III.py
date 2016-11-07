@@ -6,7 +6,7 @@ Design an algorithm to find the maximum profit. You may complete at most two tra
 Note:
 You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
 """
-
+#
 #http://www.cnblogs.com/yrbbest/p/4438472.html
 """
 一上来就没有头绪，查了一些资料以后发现大家都是用dp，可是怎么用dp才能又简洁又漂亮。不少朋友都是用类似Best Time to Buy and Sell Stock I的方法，正序来一次，逆序再来一次，然后求解，这样可以解决只能卖2次的情况。这个方法也跟Trap Rain Water很像。
