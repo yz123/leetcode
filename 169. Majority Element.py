@@ -15,6 +15,7 @@ class Solution(object):
         for num in nums:
             if count == 0:
                 res = nums
+                count += 1
             else:
                 if num == res:
                     count += 1
