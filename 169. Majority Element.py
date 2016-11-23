@@ -21,4 +21,5 @@ class Solution(object):
                     count += 1
                 else:
                     count -=1
+        print count
         return res
