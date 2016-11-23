@@ -17,6 +17,7 @@ Could you solve it in O(nk) runtime?
 #dp(n, k) n houses, k colors
 #dp(i,j) = cost(i, j) + min( dp(i-1, l)  where l!=k)
 #dp(0, j) = cost(i, j)
+#对于O(nk), 每次存最小和第二小的就可以了
 
 class Solution(object):
     def minCostII(self, costs):
