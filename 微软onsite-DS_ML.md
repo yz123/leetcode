@@ -1,3 +1,31 @@
+http://www.1point3acres.com/bbs/thread-210225-1-1.html
+
+O(log log n)
+
+http://stackoverflow.com/questions/16472012/what-would-cause-an-algorithm-to-have-olog-log-n-complexity
+
+O(log log n) terms can show up in a variety of different places, but there are typically two main routes that will arrive at this runtime.
+
+```
+1. Shrinking by a Square Root
+2. O(log n) Algorithms on Small Inputs
+```
+
+
+But, if we take the square root at each level, we get
+
+√65,536 = 256
+√256 = 16
+√16 = 4
+√4 = 2
+Notice that it only takes four steps to get all the way down to 2. Why is this? Well, let's rewrite this sequence in terms of powers of two:
+
+√65,536 = √216 = (216)1/2 = 28 = 256
+√256 = √28 = (28)1/2 = 24 = 16
+√16 = √24 = (24)1/2 = 22 = 4
+√4 = √22 = (22)1/2 = 21 = 2
+Notice that we followed the sequence 216 → 28 → 24 → 22 → 21. 
+
 这应该算接续我前一篇“[面试经验] Microsoft 电面 (data/ML类)” 的on-site经验。
 
 有人私讯我问了一下面试过程，无奈我权限不足无法私讯…我就全部一起在这回答吧…
