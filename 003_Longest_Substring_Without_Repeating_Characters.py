@@ -16,6 +16,31 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+         
+        dict = {}
+        start = 0
+        dp = 0
+        max_l = 0
+        
+        for i, ch in enumerate(s):
+            if ( ch not in dict) or (dict[ch]<start):
+                dict[ch] = i
+                dp = dp + 1
+            else:
+                max_l = max(max_l, dp)
+                start = dict[ch]+1
+                dp = i - start + 1
+                dict[ch] = i
+                
+        return max(max_l, dp)
+
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
         longest = 0
         isIn = {}
         start = 0
