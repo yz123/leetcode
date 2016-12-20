@@ -12,6 +12,38 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        return self.dp(s)
+    
+    #dp[i,i] = true, dp[i, i+1] = true if s[i] = s[i+1]
+    #dp[i, j] = dp[i+1, j-1] if s[i] ==s[j] (i<j)
+    def dp(self, s):
+        if not s: return s
+        dp = [ [False for j in xrange(len(s))] for i in xrange(len(s)) ]
+        
+        #initialization
+        dp[0][0] = True
+        begin, end = 0, 0
+        for i in xrange(1, len(s)):
+            dp[i][i] = True
+            if s[i]==s[i-1]: 
+                dp[i-1][i] = True
+                begin, end = i-1, i
+                
+        for i in xrange(len(s)-3, -1, -1):
+            for j in xrange(i+2, len(s)):
+                if dp[i+1][j-1] and s[i]==s[j]:
+                    dp[i][j] = True
+                    if end - begin < j-i:
+                        begin, end = i,j
+        
+        return s[begin: end+1]
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
         #intialize dynamic programming table, dp[start, end]=value, value: length of palindrome; not palindrome: value=-1
         
         length = len(s)
