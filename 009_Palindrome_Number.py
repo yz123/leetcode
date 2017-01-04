@@ -39,3 +39,28 @@ class Solution(object):
             x /= 10
             l_index /=100
         return True
+
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x < 0:
+            return False
+        
+        #get the largest index
+        lindex = 1
+        while x/lindex >=10:
+            lindex *= 10
+        
+        #print lindex
+        while x>0:
+            left = x/lindex
+            right = x% 10
+            if left != right:
+                return False
+            x %= lindex
+            x /= 10
+            lindex /= 100
+        return True
