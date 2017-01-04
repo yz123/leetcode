@@ -32,3 +32,24 @@ class Solution(object):
                 lists[index]+= s[i]
                 
         return ''.join(lists)
+
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows == 1:
+            return s
+            
+        row = [""]*numRows
+        N = (numRows - 1)*2
+        for i in xrange(len(s)):
+            ch = s[i]
+            index = i%N
+            if i%N > numRows-1:
+                index = N - index
+            #print index
+            row[index]+=ch
+        return "".join(row)  
