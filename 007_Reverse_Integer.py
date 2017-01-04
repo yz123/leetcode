@@ -37,3 +37,27 @@ class Solution(object):
             ret = -ret
         
         return ret
+
+    
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        tag = 1
+        if x < 0:
+            x = -x
+            tag = 0
+        res = 0
+        max = 1<<31
+        while x>0:
+            if res!=0 and max/res < 10:
+                return 0
+            res = 10*res + x%10
+            x /= 10
+        
+        if tag == 0:
+            res = -res
+        return res
+        
