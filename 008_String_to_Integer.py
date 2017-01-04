@@ -97,3 +97,39 @@ class Solution(object):
             return INT_MIN
         return ret
         
+
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        if not str: return 0
+        str = str.strip()
+        sign = 1
+        i = 0
+        if str[0] == "+":
+            i += 1
+        if str[0] == "-":
+            i += 1
+            sign = -1
+            
+        res = 0
+        while i < len(str):
+            #print str[i]
+            if str[i].isdigit()==True:
+                res = 10* res + int(str[i])
+                i += 1
+            else: 
+                break
+            
+        res = sign * res
+        
+        INT_MAX = 2147483647
+        INT_MIN = -2147483648
+        if sign == 1 and res > INT_MAX:
+            return INT_MAX
+        elif sign == -1 and res < INT_MIN:
+            return INT_MIN
+        else:
+            return res
