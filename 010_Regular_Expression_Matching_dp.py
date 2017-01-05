@@ -98,3 +98,36 @@ def main():
 
 if __name__=="__main__":
     main()
+      
+################################
+#latest version
+class Solution(object):
+    def isMatch(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: bool
+        """
+        
+        #dp[0][0] = True; dp[j][0] = False
+        #dp[0][j] = True if p[j-1]=="*" and dp[0][j-1] = True
+        
+        slen, plen = len(s), len(p)
+        dp = [ [False]*(plen+1) for i in xrange(slen+1) ]
+        dp[0][0] = True
+        for i in xrange(1, plen+1):
+            if i>=2 and p[i-1] == "*" and dp[0][i-2] == True:
+                dp[0][i] = True
+        
+        for i in xrange(1, slen+1):
+            for j in xrange(1, plen+1):
+                if p[j-1] != "*":
+                    if (dp[i-1][j-1]) and (p[j-1] =="." or s[i-1]==p[j-1]):
+                        dp[i][j] = True
+                        
+                else: #p[j-1] == "*"
+                    #if dp[i][j-1] or  ( j>=2 and dp[i][j-2]) or (  j>=2 and dp[i-1][j] and  (p[j-2]=="." or p[j-2]==s[i-1])   ):
+                    if  ( j>=2 and dp[i][j-2]) or (  j>=2 and dp[i-1][j] and  (p[j-2]=="." or p[j-2]==s[i-1])   ):
+                        dp[i][j] = True
+        #print dp
+        return dp[slen][plen]
