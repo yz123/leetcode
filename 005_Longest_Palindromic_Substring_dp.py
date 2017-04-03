@@ -70,3 +70,43 @@ class Solution(object):
                         longest = dp[i][j]
                         (start, end) = (i,j)
         return s[start: end+1]
+    
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return self.dp(s)
+    
+    #Input: "babad"
+    #Output: "bab"
+    
+    #dp[i,i] = True 
+    #dp[i, i+1] = True if s[i] == s[i+1]
+    #dp[i,j] = True if dp[i-1, j+1] and s[i]==s[j]
+    
+    def dp(self, s):
+        if not s: return None
+        
+        begin, end = 0, 0
+        
+        dp =[ [ False for j in xrange(len(s))  ] for i in xrange(len(s)) ]
+        
+        #initilize
+        for i in xrange(len(s)):
+            dp[i][i] = True
+            
+        for j in xrange(1, len(s)):
+            if s[j-1] == s[j]:
+                dp[j-1][j] = True
+                begin, end = j-1, j
+        
+        #get loop
+        for length in xrange(2, len(s)):
+            for i in xrange(len(s)-length):
+                j = i + length
+                if dp[i+1][j-1] == True and s[i]==s[j]:
+                    dp[i][j] = True
+                    begin, end = i, j
+        return s[begin:end+1]
