@@ -1,0 +1,39 @@
+factory, abstract factory: factory：数据库里根据不同的表名来创建表； af: 工厂创建不同数据库
+
+strategy: 把动作封装成class
+
+observer: 一个数据更新，发送给不同的GUI（面板）
+
+decorator: 咖啡加不同的配料， milk, suger...; Java IO
+
+singleton
+
+command：遥控器，一个类里面有不同的command
+
+adapter： 不同的adapter; 用火鸡来adapt鸭子
+
+Facade (外观模式): 把所有dvd的动作放在一起
+
+template: string, int of array; tea， caffee冲泡方法
+
+iterator: 方法： next, has_next()
+
+composite: 把menucomponent编程一个抽象类， menu里面有一个menucomponent的list, menuItem继承了menucomponent
+
+state: 有一个state接口，每个具体的state implement这个接口； vending machine; 每个state里有vending machine的类成员，在state里面更改vending machine的状态
+
+proxy: jave RMI (Remote Method Invocation) RMI STUB (client); RMI SKELETON (sever)
+
+MVC: observer, strategy, composite
+
+
+Dynamo and Cassandra: peer-to-peer (consistent hashing): high availablity
+
+Hbase and mongo: high consistency (consistant hashing)
+
+Mysql is CA
+Mongo is CP
+
+NoSQL: inefficient for join; big data; read-write (work well for write heavy db like Hbase)
+
+Sharding: consistent hashing
